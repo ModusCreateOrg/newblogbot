@@ -1,0 +1,13 @@
+{
+  "name": "newblogchecker",
+  "version": "0.0.1",
+  "description": "New Blog Checker Demo",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Modus Create",
+  "license": "MIT",
+  "dependencies": {
+    "request": "2.79.0",
+    "xml2js": "0.4.17"
+  }
+}
