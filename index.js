@@ -45,10 +45,10 @@ exports.handler = (event, context, callback) => {
 
           if (newBlogEntries.length > 0) {
             // Post message(s) to Slack
-            let messageBody = '{"text": "*New blog entr' + (newBlogEntries.length === 1 ? 'y' : 'ies') + ' published:*\n\n';
+            let messageBody = `{"text": "*New blog entr${newBlogEntries.length === 1 ? 'y' : 'ies'} published:*\n\n`;
 
             for (let blogEntry of newBlogEntries) {
-              messageBody += '• <' + blogEntry.link + '|' + blogEntry.title + '> _by ' + blogEntry.author + '_\n';
+              messageBody += `• <${blogEntry.link}|${blogEntry.title}> _by ${blogEntry.author}_\n`;
             }
 
             messageBody += '"}';
@@ -59,13 +59,13 @@ exports.handler = (event, context, callback) => {
             });
           }
 
-          callback(null, (newBlogEntries.length === 0 ? 'No' : newBlogEntries.length) + ' new blog entries found.');
+          callback(null, `${newBlogEntries.length === 0 ? 'No' : newBlogEntries.length} new blog entries found.`);
         } else {
           callback('New blog check errored - no XML or bad XML.');
         }
       });
     } else {
-      callback('Blog page errored, error code ' + res.statusCode + '.');
+      callback(`Blog page errored, error code ${res.statusCode}`);
     }
   });
-};
+}
