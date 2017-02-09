@@ -1,6 +1,3 @@
-// TODO look at a promise library for request?
-// TODO or maybe this node has that built in? -- it does
-// TODO fetch api - can this use post?
 // TODO validate data logic
 
 'use strict';
