@@ -2,9 +2,8 @@
 
 'use strict';
 
-const ONE_MINUTE = 60 * 1000;
-
-const request = require('request'),
+const ONE_MINUTE = 60 * 1000,
+      request = require('request'),
       parseXMLString = require('xml2js').parseString,
       blogFeedUrl = process.env.BLOG_FEED_URL,
       runInterval = parseInt(process.env.RUN_INTERVAL);
@@ -31,12 +30,7 @@ exports.handler = (event, context, callback) => {
               });              
             } else {
               // We are done as blog entries are in date order with most recent first.
-              // TEMP -- this should really be a "break;"
-              newBlogEntries.push({
-                author: blogEntry['dc:creator'][0],
-                title: blogEntry.title[0],
-                link: blogEntry.link[0]
-              });              
+              break;
             }
           }
 
@@ -65,4 +59,4 @@ exports.handler = (event, context, callback) => {
       callback(`Blog page errored, error code ${res.statusCode}`);
     }
   });
-}
+};
