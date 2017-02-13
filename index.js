@@ -1,5 +1,3 @@
-// TODO validate data logic
-
 'use strict';
 
 const ONE_MINUTE = 60 * 1000,
