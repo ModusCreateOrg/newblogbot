@@ -15,7 +15,7 @@ Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an
 This Lambda function requires the following environment variables:
 
 * `RUN_INTERVAL` - set to the number of minutes between runs of the function (needs to agress with the cron expression you set up in CloudWatch to trigger the function (example: if cron fires every hour, set this to 60)
-* `SLACK_HOOK_URL` - set to the full URL for your incoming webhook to Slack (example: )
+* `SLACK_HOOK_URL` - set to the full URL for your incoming webhook to Slack (example: `https://hooks.slack.com/services/T025XXXXX/B42XXXXXB/YXXXXXzoTAdVqzGjXXXXXXXX`)
 * `BLOG_FEED_URL` - set to the URL of the RSS feed to monitor (example: `http://moduscreate.com/blog/`)
 
 ## Example Output
