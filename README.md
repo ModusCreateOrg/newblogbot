@@ -20,11 +20,17 @@ This Lambda function requires the following environment variables:
 
 ## Example Output
 
-This will produce output similar to:
+This will produce output similar to this when a new blog post is detected:
 
-TODO
+![Example New Blog Published](screenshots/new_blog_entry_detected.png)
+
+If multiple posts have been published since the last run and within the configured time limit, each one will be reported as a separate bullet point in the list.  The bot posts a single message to Slack in either case.
 
 Where the blog post title is a link to the blog post page.
+
+## How it Works
+
+TODO
 
 ## Useful Links
 
