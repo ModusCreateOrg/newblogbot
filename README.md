@@ -37,5 +37,6 @@ TODO
 * [AWS Lambda coding with Node](http://docs.aws.amazon.com/lambda/latest/dg/programming-model.html)
 * [Triggering Lambda functions using cron expressions with CloudWatch](http://docs.aws.amazon.com/lambda/latest/dg/with-scheduled-events.html)
 * [Slack Incoming WebHooks](https://api.slack.com/incoming-webhooks)
+* [Slack Message Formatting](https://api.slack.com/docs/message-formatting)
 * [Node `xml2js` module documentation](https://www.npmjs.com/package/xml2js)
 * [Node `request` module documentation](https://www.npmjs.com/package/request)
