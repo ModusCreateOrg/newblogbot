@@ -1,6 +1,6 @@
 # New Blog Bot
 
-Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an RSS feed at a configurable interval, and checking for entries published in the time period since the last run.
+Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an RSS feed at a configurable interval, and checking for entries published in the time period since the last run.  This will only detect entries published in the time since the last run, as it doesn't use persistent storage to remember the timestamp of the newest article from previous runs.
 
 ## Setup
 
