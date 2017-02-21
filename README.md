@@ -4,7 +4,17 @@ Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an
 
 ## Setup (Slack)
 
-TODO
+You need to set up an incoming webhook in Slack that points to the channel that you want notifications to appear on.  To do this:
+
+* Login with your Slack account credentials at https://<yourslackteam>.slack.com/apps/manage/custom-integrations
+* Click 'Custom Integrations'
+* Click 'Incoming Webhooks'
+* Click 'Add Configuration'
+* Select the channel that you want the posts to appear in from the drop down list
+* Click 'Add Incoming WebHooks Integration'
+* Make a note of the resulting Webhook URL that Slack displays, which will be something like `https://hooks.slack.com/services/TXXXXXXSY/B47XXXXXX/oapXXXXXXXXXXjJG4LqO3lzP`
+
+You can also check out Slack's own guide to [Incoming Webhooks](https://api.slack.com/incoming-webhooks).
 
 ## Setup (AWS)
 
