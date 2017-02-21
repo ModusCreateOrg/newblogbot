@@ -4,7 +4,12 @@ Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an
 
 ## Setup
 
-* Create a new Lambda function using the contents of `index.js`
+* Clone this repo
+* Run `npm install`
+* Zip up the following:
+    * `index.js`
+    * `node_modules`
+* Create a new Lambda function, uploading your zip file as the source package
 * Set the function to be triggered hourly (or some other interval of your choosing) using a cron expression in a CloudWatch Event (see example screenshot below)
 * Set environment variables as described below
 
