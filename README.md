@@ -2,7 +2,11 @@
 
 Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an RSS feed at a configurable interval, and checking for entries published in the time period since the last run.  This will only detect entries published in the time since the last run, as it doesn't use persistent storage to remember the timestamp of the newest article from previous runs.
 
-## Setup
+## Setup (Slack)
+
+TODO
+
+## Setup (AWS)
 
 * Clone this repo
 * Run `npm install`
@@ -21,7 +25,7 @@ This Lambda function requires the following environment variables:
 
 * `RUN_INTERVAL` - set to the number of minutes between runs of the function (needs to agress with the cron expression you set up in CloudWatch to trigger the function (example: if cron fires every hour, set this to 60)
 * `SLACK_HOOK_URL` - set to the full URL for your incoming webhook to Slack (example: `https://hooks.slack.com/services/T025XXXXX/B42XXXXXB/YXXXXXzoTAdVqzGjXXXXXXXX`)
-* `BLOG_FEED_URL` - set to the URL of the RSS feed to monitor (example: `http://moduscreate.com/blog/`)
+* `BLOG_FEED_URL` - set to the URL of the RSS feed to monitor (example: `http://moduscreate.com/feed/`)
 
 ## Example Output
 
@@ -33,7 +37,17 @@ If multiple posts have been published since the last run and within the configur
 
 ## How it Works
 
-TODO
+This works by first of all grabbing the RSS feed for the blog (in our case from here `http://moduscreate.com/feed/`), then parsing it to an XML object using the [xml2js module](https://www.npmjs.com/package/xml2js).
+
+This returns an object whose structure broadly reflects that of the RSS feed, with one difference being that xml2js parses child elements into arrays, so to access the nodes at `rss/channel/item` we need to use:
+
+```
+rss.channel[0].item
+```
+
+Having read the RSS feed, the code then loops over each item in it and checks to see if the `pubDate` for that item is within the time since the last time that the function ran (By using the environment variable `RUN_INTERVAL` to determine how often the function is set to run.  This isn't ideal as this needs to be set so that it agrees with the CloudWatch cron expression that actually runs the function, but I was unable to find a way for a running AWS Lambda function to query the time it was last invoked without using persistent database storage or serializing a JSON object to S3, so figured this was good enough).  Each "new since the last run" blog posts it put in the `newBlogEntries` array.  The code stops looking in the RSS feed when it finds an entry that is older than the last run time of the function.
+
+If there are new blog entries since the last run, the code then loops over `newBlogEntries` and constructs a Slack message for each, consisting of the title of the blog (which is also a link to the article), and the author's name.  These are then posted to a Slack Web Hook URL as a single message.
 
 ## Useful Links
 
