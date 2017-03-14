@@ -40,7 +40,7 @@ exports.handler = (event, context, callback) => {
               messageBody += `• <${blogEntry.link}|${blogEntry.title}> _by ${blogEntry.author}_\n`;
             }
 
-            messageBody += '"}';
+            messageBody += '", "unfurl_links": true}';
 
             request.post({
               url: process.env.SLACK_HOOK_URL,
