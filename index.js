@@ -11,14 +11,14 @@ exports.handler = (event, context, callback) => {
     if (! err && res.statusCode == 200) {
       parseXMLString(body, (e, r) => {
         if (! err && r) {
-          let newBlogEntries = [];
+          let newBlogEntries = [],
+              currentTime = new Date();
 
           // Loop over entries until we find one that is too old.
           for (let blogEntry of r.rss.channel[0].item) {          
             // Work out if the blog entry is new since last time we looked...
-            let latestBlogTime = new Date(blogEntry.pubDate[0]),
-                currentTime = new Date();
-              
+            let latestBlogTime = new Date(blogEntry.pubDate[0]);
+                          
             if ((currentTime.getTime() - latestBlogTime.getTime()) <= (runInterval * ONE_MINUTE)) {
               // Post was published since the last check...
               newBlogEntries.push({
