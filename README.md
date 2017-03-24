@@ -2,6 +2,8 @@
 
 Simple AWS Lambda Bot that posts new blog entries to Slack.  Works by polling an RSS feed at a configurable interval, and checking for entries published in the time period since the last run.  This will only detect entries published in the time since the last run, as it doesn't use persistent storage to remember the timestamp of the newest article from previous runs.
 
+For full details, see our blog post on this which is [here](https://medium.com/@simon_prickett/promoting-new-blog-entries-with-aws-lambda-and-slack-7efa9340943#.3wltkn5ff).
+
 We built this to learn more about the technologies involved.  If you want a no coding solution to consuming an RSS 
 feed within Slack, check out their [built in RSS reader functionality](https://get.slack.help/hc/en-us/articles/218688467-Add-RSS-feeds-to-Slack).
 
